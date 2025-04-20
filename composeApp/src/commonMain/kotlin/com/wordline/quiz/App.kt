@@ -9,12 +9,10 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,7 +27,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun App() {
-    val adeoExperience: CvData = CvData(
+    val adeoExperience = CvData(
         "Développeur Fullstack",
         "Adeo",
         "01/09/2024",
@@ -41,7 +39,7 @@ fun App() {
         )
     )
 
-    val falconMarketingExperience: CvData = CvData(
+    val falconMarketingExperience = CvData(
         "Développeur Web Fullstack",
         "Falcon Marketing",
         "01/09/2023",
@@ -52,7 +50,7 @@ fun App() {
         )
     )
 
-    val esgiFormation: CvData = CvData(
+    val esgiFormation = CvData(
         null,
         "ESGI",
         "2023",
@@ -62,7 +60,7 @@ fun App() {
         )
     )
 
-    val btsFormation: CvData = CvData(
+    val btsFormation = CvData(
         null,
         "Gaston Berger",
         "2021",
@@ -72,14 +70,12 @@ fun App() {
         )
     )
 
-
     MaterialTheme {
         Scaffold(
             topBar = {TopBar()},
             drawerGesturesEnabled = true,
             drawerBackgroundColor = Color.Black,
             drawerContentColor = Color.White,
-            drawerContent = { Text("Drawer content") }
         ) {
                 Column(
                     Modifier.fillMaxWidth(),
@@ -97,37 +93,61 @@ fun App() {
                             Modifier.fillMaxWidth()
                             .padding(Dp(18F))
                         ) {
-                            Column(verticalArrangement = Arrangement.spacedBy(15.dp)) {
+                            Column(verticalArrangement = Arrangement.spacedBy(25.dp)) {
                                 Text(
                                     text = "Yannis Alouache",
                                     fontSize = 24.sp,
                                     fontWeight = FontWeight.Black
                                 )
                                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                                    Text(
-                                        text = "Expériences professionnelles",
-                                        fontSize = 17.sp
-                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .background(Color(0xFF284861))
+                                            .padding(8.dp)
+                                    ) {
+                                        Text(
+                                            text = "Expériences",
+                                            fontSize = 24.sp,
+                                            color = Color.White
+                                        )
+                                    }
                                     Divider()
                                     CvExperience(adeoExperience)
                                     CvExperience(falconMarketingExperience)
                                 }
 
                                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                                    Text(
-                                        text = "Formations",
-                                        fontSize = 17.sp
-                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .background(Color(0xFF284861))
+                                            .padding(8.dp)
+                                    ) {
+                                        Text(
+                                            text = "Formations",
+                                            fontSize = 24.sp,
+                                            color = Color.White
+                                        )
+                                    }
                                     Divider()
                                     CvFormation(esgiFormation)
                                     CvFormation(btsFormation)
                                 }
 
-                                Column() {
-                                    Text(
-                                        text = "Compétences",
-                                        fontSize = 17.sp
-                                    )
+
+
+                                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                                    Box(
+                                        modifier = Modifier
+                                            .background(Color(0xFF284861))
+                                            .padding(8.dp)
+                                    ) {
+                                        Text(
+                                            text = "Compétences",
+                                            fontSize = 24.sp,
+                                            color = Color.White
+                                        )
+                                    }
+                                    Divider()
                                     CvCompetence(listOf("NodeJs", "NestJs", "TDD", "Handlebars", "Datadog", "MongoDB"))
                                 }
                             }
